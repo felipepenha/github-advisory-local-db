@@ -57,19 +57,21 @@ make test
 #### Check Package Vulnerabilities
 
 To check a specific Python package (and its dependencies) for vulnerabilities using a temporary `uv` environment:
-
-```bash
-make check-package PACKAGE="name==version"
-```
-
-Example:
-```bash
-make check-package PACKAGE="langchain==1.2.0"
+ 
+ ```bash
+ make check-package PACKAGE="name==version" PYTHON_VERSION="3.xx"
+ ```
+ 
+ Example:
+ ```bash
+ make check-package PACKAGE="langchain==1.2.0" PYTHON_VERSION="3.14.2"
 
 ----------------------------------------------------------------------
 Checking vulnerabilities for langchain==1.2.0...
+-n Environment Python: 
+Python 3.14.2
 ----------------------------------------------------------------------
-Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.uEtdx7az9L/uv.lock...
+Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.2HhINoIUOc/uv.lock...
  - annotated-types 0.7.0
  - anyio 4.12.0
  - certifi 2025.11.12
@@ -96,7 +98,7 @@ Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.u
  - requests 2.32.5
  - requests-toolbelt 1.0.0
  - tenacity 9.1.2
- - tmp-uetdx7az9l 0.1.0
+ - tmp-2hhinoiuoc 0.1.0
  - typing-extensions 4.15.0
  - typing-inspection 0.4.2
  - urllib3 2.6.2
@@ -107,9 +109,12 @@ jsonpointer 3.0.0 | GHSA-282f-qqgm-c34q | ["CVE-2021-23807"] | 5.0.0 | Prototype
 langchain 1.2.0 | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] | No fixed version | LangChain vulnerable to code injection
 langchain 1.2.0 | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 1.2.3 | LangChain serialization injection vulnerability enables secret extraction
 ----------------------------------------------------------------------
+Done.
 ```
 
 The analysis is based on the temporary `uv.lock` file.
+
+If version is not specified, the report will be based on what is likely the latest versions
 
 #### Check Vulnerability History for a Package
 

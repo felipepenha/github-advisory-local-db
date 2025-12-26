@@ -9,7 +9,7 @@ help:
 	@echo "  make test             - Verify DB by querying for langchain-core"
 	@echo "  make format           - Check code format using black, isort, mypy"
 	@echo "  make clean            - Remove the generated database files"
-	@echo "  make check-package PACKAGE=\"name==ver\" - Check a specific package version"
+	@echo "  make check-package PACKAGE=\"name==ver\" PYTHON_VERSION=\"3.xx\" - Check a specific package version"
 	@echo "  make check-package-history PACKAGE=\"name\" - Check vulnerability history for a package"
 	@echo "  make all              - Run all recipes."
 	@echo ""
@@ -36,12 +36,14 @@ clean:
 	rm -f advisory.db advisory.db-journal advisory.db-wal
 
 check-package:
-	@if [ -z "$(PACKAGE)" ]; then echo "PACKAGE variable not set. Use make check-package PACKAGE=\"name==version\""; exit 1; fi
+	@if [ -z "$(PACKAGE)" ]; then echo "PACKAGE variable not set. Use make check-package PACKAGE=\"name==version\" PYTHON_VERSION=\"3.xx\""; exit 1; fi
+	@if [ -z "$(PYTHON_VERSION)" ]; then echo "PYTHON_VERSION variable not set. Use make check-package PACKAGE=\"name==version\" PYTHON_VERSION=\"3.xx\""; exit 1; fi
 	@TEMP_DIR=$$(mktemp -d); \
 	echo "Created temp dir: $$TEMP_DIR"; \
-	(cd $$TEMP_DIR && uv init --no-workspace > /dev/null 2>&1 && uv add "$(PACKAGE)" > /dev/null 2>&1); \
+	(cd $$TEMP_DIR && uv init --python $(PYTHON_VERSION) --no-workspace > /dev/null 2>&1 && uv add "$(PACKAGE)" > /dev/null 2>&1); \
 	echo "----------------------------------------------------------------------"; \
 	echo "Checking vulnerabilities for $(PACKAGE)..."; \
+	echo -n "Environment Python: "; (cd $$TEMP_DIR && uv run python --version); \
 	echo "----------------------------------------------------------------------"; \
 	uv run scripts/check_uv_package.py --lock-file "$$TEMP_DIR/uv.lock"; \
 	rm -rf $$TEMP_DIR; \
