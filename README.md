@@ -17,7 +17,6 @@ To get started, clone the repository, sync dependencies, and build the database:
 
 ```bash
 git clone --recursive https://github.com/fcpenha/github-advisory-local-db.git
-cd github-advisory-local-db
 make init-db
 ```
 
@@ -47,12 +46,25 @@ This command syncs dependencies, updates the submodule, and builds the SQLite da
 make init-db
 ```
 
-#### Query Database
+#### Test Database
 
-To verify the database by querying for `langchain-core` vulnerabilities:
+To verify the database by querying for `langchain` and `langchain-core` vulnerabilities:
 
 ```bash
-make query-langchain
+make test
+```
+
+#### Check Package Vulnerabilities
+
+To check a specific package (and its dependencies) for vulnerabilities using a temporary environment:
+
+```bash
+make check-package PACKAGE="name==version"
+```
+
+Example:
+```bash
+make check-package PACKAGE="langchain==1.2.0"
 ```
 
 #### Clean
@@ -61,4 +73,14 @@ To remove the generated database files:
 
 ```bash
 make clean
+```
+
+### Development
+
+#### Format Code
+
+To run code formatting and static analysis with `isort`, `black`, and `mypy`:
+
+```bash
+make format
 ```
