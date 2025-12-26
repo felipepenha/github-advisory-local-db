@@ -2,32 +2,38 @@
 
 Spin up your own local database for: security vulnerabilities inclusive of CVEs and GitHub originated security advisories from the world of open source software.
 
+
 ## Workflow
 
-This project includes the [GitHub Advisory Database](https://github.com/github/advisory-database) as a git submodule in the `advisory-database` directory.
+This project uses `make` and `uv` to automate common tasks.
+
+### Prerequisites
+
+- [uv](https://github.com/astral-sh/uv) must be installed.
 
 ### Quickstart
 
-To get started, you can clone this repository and build the local SQLite database:
+To get started, clone the repository, sync dependencies, and build the database:
 
 ```bash
 git clone --recursive https://github.com/fcpenha/github-advisory-local-db.git
-make all
+cd github-advisory-local-db
+make init-db
 ```
 
-### Step-by-step
+### Commands
 
-#### Cloning the Repository
+#### Sync Dependencies
 
-When cloning this repository, you need to initialize the submodule:
+To install `uv` (if not present) and sync project dependencies:
 
 ```bash
-git clone --recursive https://github.com/fcpenha/github-advisory-local-db.git
+make sync
 ```
 
-#### Updating the Submodule
+#### Sync Submodule
 
-To update the advisory database to the latest version:
+To update the submodule to the latest commit:
 
 ```bash
 make sync-submodule
@@ -35,13 +41,11 @@ make sync-submodule
 
 #### Initialize Database
 
-To sync the submodule and build the local SQLite database:
+This command syncs dependencies, updates the submodule, and builds the SQLite database using the `scripts/build_db.py` script:
 
 ```bash
 make init-db
 ```
-
-This will create an `advisory.db` file in the root directory.
 
 #### Query Database
 

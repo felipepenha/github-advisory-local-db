@@ -3,3 +3,8 @@
 *.db-wal
 __pycache__/
 *.pyc
+
+# Python
+.python-version
+.venv/
+.DS_Store

@@ -2,24 +2,33 @@
 help:
 	@echo "GitHub Advisory Local DB - Available Commands:"
 	@echo ""
-	@echo "  make sync-submodule   - Update the git submodule"
-	@echo "  make init-db          - Build the local SQLite database"
-	@echo "  make test  		   - Verify DB by querying for langchain-core"
+	@echo "  make sync             - Install uv and project dependencies"
+	@echo "  make sync-submodule   - Initialize and update the git submodule"
+	@echo "  make init-db          - Build the local SQLite database (uses uv run)"
+	@echo "  make query-langchain  - Verify DB by querying for langchain-core"
 	@echo "  make clean            - Remove the generated database files"
+	@echo "  make all              - Run all recipes."
 	@echo ""
 
-.PHONY: help sync-submodule init-db test clean
+.PHONY: help sync sync-submodule init-db query-langchain clean
+
+sync:
+	uv sync
 
 sync-submodule:
-	git submodule update --remote
+	git submodule update --init --recursive
 
-init-db:
-	python3 scripts/build_db.py
+init-db: sync sync-submodule
+	uv run scripts/build_db.py
 
-test:
-	sqlite3 advisory.db "SELECT P.name, A.id, A.summary FROM affected_packages P JOIN advisories A ON P.advisory_id = A.id WHERE P.name = 'langchain-core';"
+query-langchain:
+	@echo "----------------------------------------------------------------------"
+	@echo "Querying for 'langchain-core' vulnerabilities..."
+	@echo "----------------------------------------------------------------------"
+	uv run scripts/test_query.py
+	@echo "----------------------------------------------------------------------"
 
 clean:
 	rm -f advisory.db advisory.db-journal advisory.db-wal
 
-all: clean sync-submodule init-db test
+all: clean sync sync-submodule init-db query-langchain
