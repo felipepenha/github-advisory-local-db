@@ -56,7 +56,7 @@ make test
 
 #### Check Package Vulnerabilities
 
-To check a specific package (and its dependencies) for vulnerabilities using a temporary environment:
+To check a specific Python package (and its dependencies) for vulnerabilities using a temporary `uv` environment:
 
 ```bash
 make check-package PACKAGE="name==version"
@@ -66,6 +66,8 @@ Example:
 ```bash
 make check-package PACKAGE="langchain==1.2.0"
 ```
+
+The analysis is based on the temporary `uv.lock` file.
 
 #### Clean
 
