@@ -82,7 +82,7 @@ def check_package(lock_file):
                 # If no fixed version is specified, it might be always vulnerable or data is missing.
                 # Report it to be safe.
                 print(
-                    f"[VULNERABLE] {pkg_name} {current_version_str} | {advisory_id} | {aliases} | No fixed version | {summary}"
+                    f"{pkg_name} {current_version_str} | {advisory_id} | {aliases} | No fixed version | {summary}"
                 )
                 continue
 
@@ -99,7 +99,7 @@ def check_package(lock_file):
 
                 if is_vulnerable:
                     print(
-                        f"[VULNERABLE] {pkg_name} {current_version_str} | {advisory_id} | {aliases} | Fixed in: {fixed_version_str} | {summary}"
+                        f"{pkg_name} {current_version_str} | {advisory_id} | {aliases} | {fixed_version_str} | {summary}"
                     )
 
             except Exception as e:
