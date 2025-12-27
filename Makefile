@@ -20,7 +20,7 @@ sync:
 	uv sync
 
 sync-submodule:
-	git submodule update --init --recursive
+	git submodule update --init --recursive --remote
 
 init-db: sync sync-submodule
 	uv run scripts/build_db.py
