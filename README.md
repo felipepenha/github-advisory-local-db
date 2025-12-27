@@ -64,14 +64,14 @@ To check a specific Python package (and its dependencies) for vulnerabilities us
  
  Example:
  ```bash
- make check-package PACKAGE="langchain==1.2.0" PYTHON_VERSION="3.14.2"
+ make check-package PACKAGE="langchain-core==1.2.0" PYTHON_VERSION="3.14.2"
 
 ----------------------------------------------------------------------
-Checking vulnerabilities for langchain==1.2.0...
+Checking vulnerabilities for langchain-core==1.2.0...
 -n Environment Python: 
 Python 3.14.2
 ----------------------------------------------------------------------
-Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.Sy2BIQQJvv/uv.lock...
+Checking 26 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.kmdvWnPizN/uv.lock...
  - annotated-types 0.7.0
  - anyio 4.12.0
  - certifi 2025.11.12
@@ -82,15 +82,9 @@ Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.S
  - idna 3.11
  - jsonpatch 1.33
  - jsonpointer 3.0.0
- - langchain 1.2.0
- - langchain-core 1.2.5
- - langgraph 1.0.5
- - langgraph-checkpoint 3.0.1
- - langgraph-prebuilt 1.0.5
- - langgraph-sdk 0.3.1
+ - langchain-core 1.2.0
  - langsmith 0.5.1
  - orjson 3.11.5
- - ormsgpack 1.12.1
  - packaging 25.0
  - pydantic 2.12.5
  - pydantic-core 2.41.5
@@ -98,14 +92,13 @@ Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.S
  - requests 2.32.5
  - requests-toolbelt 1.0.0
  - tenacity 9.1.2
- - tmp-sy2biqqjvv 0.1.0
+ - tmp-kmdvwnpizn 0.1.0
  - typing-extensions 4.15.0
  - typing-inspection 0.4.2
  - urllib3 2.6.2
  - uuid-utils 0.12.0
- - xxhash 3.6.0
  - zstandard 0.25.0
-langchain | PyPI | 1.2.0 | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] | No fixed version | LangChain vulnerable to code injection
+langchain-core | PyPI | 1.2.0 | GHSA-c67j-w6g6-q2cm | ["CVE-2025-68664"] | 1.2.5 | LangChain serialization injection vulnerability enables secret extraction in dumps/loads APIs
 ----------------------------------------------------------------------
 Done.
 ```
