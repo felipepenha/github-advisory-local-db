@@ -48,10 +48,10 @@ def check_package(lock_file):
     # Construct SQL query with IN clause
     placeholders = ",".join(["?"] * len(package_names))
     query = f"""
-    SELECT P.name, A.id, A.aliases, P.fixed_version, A.summary 
+    SELECT P.name, A.id, A.aliases, P.fixed_version, A.summary, P.ecosystem
     FROM affected_packages P 
     JOIN advisories A ON P.advisory_id = A.id 
-    WHERE P.name IN ({placeholders})
+    WHERE P.name IN ({placeholders}) AND P.ecosystem = 'PyPI'
     ORDER BY P.name, A.id, A.aliases, P.fixed_version;
     """
 
@@ -70,6 +70,7 @@ def check_package(lock_file):
             aliases = row[2]
             fixed_version_str = row[3]
             summary = row[4]
+            ecosystem = row[5]
 
             # Get version from lock file map
             current_version_str = package_versions.get(pkg_name)
@@ -82,7 +83,7 @@ def check_package(lock_file):
                 # If no fixed version is specified, it might be always vulnerable or data is missing.
                 # Report it to be safe.
                 print(
-                    f"{pkg_name} {current_version_str} | {advisory_id} | {aliases} | No fixed version | {summary}"
+                    f"{pkg_name} | {ecosystem} | {current_version_str} | {advisory_id} | {aliases} | No fixed version | {summary}"
                 )
                 continue
 
@@ -99,14 +100,14 @@ def check_package(lock_file):
 
                 if is_vulnerable:
                     print(
-                        f"{pkg_name} {current_version_str} | {advisory_id} | {aliases} | {fixed_version_str} | {summary}"
+                        f"{pkg_name} | {ecosystem} | {current_version_str} | {advisory_id} | {aliases} | {fixed_version_str} | {summary}"
                     )
 
             except Exception as e:
                 print(f"Error comparing versions for {pkg_name}: {e}")
                 # Fallback to reporting
                 print(
-                    f"[CHECK MANUAL] {pkg_name} {current_version_str} | {advisory_id} | {aliases} | Fixed: {fixed_version_str}"
+                    f"[CHECK MANUAL] {pkg_name} | {ecosystem} | {current_version_str} | {advisory_id} | {aliases} | Fixed: {fixed_version_str}"
                 )
 
     except sqlite3.Error as e:

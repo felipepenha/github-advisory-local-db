@@ -14,7 +14,7 @@ def check_history(package_name):
     cursor = conn.cursor()
 
     query = """
-    SELECT P.name, A.id, A.aliases, P.fixed_version, A.summary 
+    SELECT P.name, A.id, A.aliases, P.fixed_version, A.summary, P.ecosystem
     FROM affected_packages P 
     JOIN advisories A ON P.advisory_id = A.id 
     WHERE P.name = ?
@@ -32,8 +32,8 @@ def check_history(package_name):
         print(f"Vulnerability history for '{package_name}':")
         print("-" * 80)
         for row in rows:
-            # Output format: name|id|aliases|fixed_version|summary
-            print(f"{row[0]} | {row[1]} | {row[2]} | {row[3]} | {row[4]}")
+            # Output format: name|ecosystem|id|aliases|fixed_version|summary
+            print(f"{row[0]} | {row[5]} | {row[1]} | {row[2]} | {row[3]} | {row[4]}")
     except sqlite3.Error as e:
         print(f"Database error: {e}")
     finally:

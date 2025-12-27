@@ -71,7 +71,7 @@ Checking vulnerabilities for langchain==1.2.0...
 -n Environment Python: 
 Python 3.14.2
 ----------------------------------------------------------------------
-Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.2HhINoIUOc/uv.lock...
+Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.Sy2BIQQJvv/uv.lock...
  - annotated-types 0.7.0
  - anyio 4.12.0
  - certifi 2025.11.12
@@ -98,23 +98,21 @@ Checking 33 packages from /var/folders/t0/k8gt3srs7xqd5cppy9549_pc0000gn/T/tmp.2
  - requests 2.32.5
  - requests-toolbelt 1.0.0
  - tenacity 9.1.2
- - tmp-2hhinoiuoc 0.1.0
+ - tmp-sy2biqqjvv 0.1.0
  - typing-extensions 4.15.0
  - typing-inspection 0.4.2
  - urllib3 2.6.2
  - uuid-utils 0.12.0
  - xxhash 3.6.0
  - zstandard 0.25.0
-jsonpointer 3.0.0 | GHSA-282f-qqgm-c34q | ["CVE-2021-23807"] | 5.0.0 | Prototype Pollution in node-jsonpointer
-langchain 1.2.0 | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] | No fixed version | LangChain vulnerable to code injection
-langchain 1.2.0 | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 1.2.3 | LangChain serialization injection vulnerability enables secret extraction
+langchain | PyPI | 1.2.0 | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] | No fixed version | LangChain vulnerable to code injection
 ----------------------------------------------------------------------
 Done.
 ```
 
 The analysis is based on the temporary `uv.lock` file.
 
-If version is not specified, the report will be based on what is likely the latest versions
+If version is not specified, the report will be based on what is likely the compatible with the chosen Python version.
 
 #### Check Vulnerability History for a Package
 
@@ -133,29 +131,29 @@ Checking vulnerability history for langchain...
 ----------------------------------------------------------------------
 Vulnerability history for 'langchain':
 --------------------------------------------------------------------------------
-langchain | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 1.2.3 | LangChain serialization injection vulnerability enables secret extraction
-langchain | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 0.3.37 | LangChain serialization injection vulnerability enables secret extraction
-langchain | GHSA-3hjh-jh2h-vrg6 | ["CVE-2024-2965"] | 0.2.5 | Denial of service in langchain-community
-langchain | GHSA-hc5w-c9f8-9cc4 | ["CVE-2024-7774"] | 0.2.19 | Langchain Path Traversal vulnerability
-langchain | GHSA-45pg-36p6-83v9 | ["CVE-2024-8309"] | 0.2.0 | Langchain SQL Injection vulnerability
-langchain | GHSA-h9j7-5xvc-qhg5 | ["CVE-2024-0243"] | 0.1.0 | langchain Server-Side Request Forgery vulnerability
-langchain | GHSA-rgp8-pm28-3759 | ["CVE-2024-3571"] | 0.0.353 | langchain vulnerable to path traversal
-langchain | GHSA-h59x-p739-982c | ["CVE-2024-28088"] | 0.0.339 | LangChain directory traversal vulnerability
-langchain | GHSA-6h8p-4hx9-w66c | ["CVE-2023-32786"] | 0.0.329 | Langchain Server-Side Request Forgery vulnerability
-langchain | GHSA-prgp-w7vf-ch62 | ["CVE-2023-39659"] | 0.0.325 | LangChain vulnerable to arbitrary code execution
-langchain | GHSA-655w-fm8m-m478 | ["CVE-2023-46229"] | 0.0.317 | LangChain Server Side Request Forgery vulnerability
-langchain | GHSA-7gfq-f96f-g85j | ["CVE-2023-36281"] | 0.0.312 | langchain vulnerable to arbitrary code execution
-langchain | GHSA-f73w-4m7g-ch9x | ["CVE-2023-39631"] | 0.0.308 | Langchain vulnerable to arbitrary code execution via the evaluate function in the numexpr library
-langchain | GHSA-8h5w-f6q9-wg35 | ["CVE-2023-32785"] | 0.0.247 | Langchain SQL Injection vulnerability
-langchain | GHSA-2qmj-7962-cjq8 | ["CVE-2023-36258"] | 0.0.247 | langchain arbitrary code execution vulnerability
-langchain | GHSA-7q94-qpjr-xpgm | ["CVE-2023-36189"] | 0.0.247 | langchain SQL Injection vulnerability
-langchain | GHSA-fj32-q626-pjjc | ["CVE-2023-38860"] | 0.0.247 | LangChain vulnerable to arbitrary code execution
-langchain | GHSA-6643-h7h5-x9wh | ["CVE-2023-34541"] | 0.0.247 | Langchain vulnerable to arbitrary code execution
-langchain | GHSA-57fc-8q82-gfp3 | ["CVE-2023-36188"] | 0.0.236 | langchain vulnerable to arbitrary code execution
-langchain | GHSA-92j5-3459-qgp4 | ["CVE-2023-38896"] | 0.0.236 | LangChain vulnerable to arbitrary code execution
-langchain | GHSA-gwqq-6vq7-5j86 | ["CVE-2023-36095"] | 0.0.236 | langchain Code Injection vulnerability
-langchain | GHSA-x32c-59v5-h7fg | ["CVE-2023-34540"] | 0.0.225 | Langchain OS Command Injection vulnerability
-langchain | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] |  | LangChain vulnerable to code injection
+langchain | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 1.2.3 | LangChain serialization injection vulnerability enables secret extraction | npm
+langchain | GHSA-r399-636x-v7f6 | ["CVE-2025-68665"] | 0.3.37 | LangChain serialization injection vulnerability enables secret extraction | npm
+langchain | GHSA-3hjh-jh2h-vrg6 | ["CVE-2024-2965"] | 0.2.5 | Denial of service in langchain-community | PyPI
+langchain | GHSA-hc5w-c9f8-9cc4 | ["CVE-2024-7774"] | 0.2.19 | Langchain Path Traversal vulnerability | npm
+langchain | GHSA-45pg-36p6-83v9 | ["CVE-2024-8309"] | 0.2.0 | Langchain SQL Injection vulnerability | PyPI
+langchain | GHSA-h9j7-5xvc-qhg5 | ["CVE-2024-0243"] | 0.1.0 | langchain Server-Side Request Forgery vulnerability | PyPI
+langchain | GHSA-rgp8-pm28-3759 | ["CVE-2024-3571"] | 0.0.353 | langchain vulnerable to path traversal | PyPI
+langchain | GHSA-h59x-p739-982c | ["CVE-2024-28088"] | 0.0.339 | LangChain directory traversal vulnerability | PyPI
+langchain | GHSA-6h8p-4hx9-w66c | ["CVE-2023-32786"] | 0.0.329 | Langchain Server-Side Request Forgery vulnerability | PyPI
+langchain | GHSA-prgp-w7vf-ch62 | ["CVE-2023-39659"] | 0.0.325 | LangChain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-655w-fm8m-m478 | ["CVE-2023-46229"] | 0.0.317 | LangChain Server Side Request Forgery vulnerability | PyPI
+langchain | GHSA-7gfq-f96f-g85j | ["CVE-2023-36281"] | 0.0.312 | langchain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-f73w-4m7g-ch9x | ["CVE-2023-39631"] | 0.0.308 | Langchain vulnerable to arbitrary code execution via the evaluate function in the numexpr library | PyPI
+langchain | GHSA-8h5w-f6q9-wg35 | ["CVE-2023-32785"] | 0.0.247 | Langchain SQL Injection vulnerability | PyPI
+langchain | GHSA-2qmj-7962-cjq8 | ["CVE-2023-36258"] | 0.0.247 | langchain arbitrary code execution vulnerability | PyPI
+langchain | GHSA-7q94-qpjr-xpgm | ["CVE-2023-36189"] | 0.0.247 | langchain SQL Injection vulnerability | PyPI
+langchain | GHSA-fj32-q626-pjjc | ["CVE-2023-38860"] | 0.0.247 | LangChain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-6643-h7h5-x9wh | ["CVE-2023-34541"] | 0.0.247 | Langchain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-57fc-8q82-gfp3 | ["CVE-2023-36188"] | 0.0.236 | langchain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-92j5-3459-qgp4 | ["CVE-2023-38896"] | 0.0.236 | LangChain vulnerable to arbitrary code execution | PyPI
+langchain | GHSA-gwqq-6vq7-5j86 | ["CVE-2023-36095"] | 0.0.236 | langchain Code Injection vulnerability | PyPI
+langchain | GHSA-x32c-59v5-h7fg | ["CVE-2023-34540"] | 0.0.225 | Langchain OS Command Injection vulnerability | PyPI
+langchain | GHSA-fprp-p869-w6q2 | ["CVE-2023-29374"] |  | LangChain vulnerable to code injection | PyPI
 ----------------------------------------------------------------------
 Done.
 ```
